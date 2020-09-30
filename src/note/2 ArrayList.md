@@ -9,13 +9,14 @@ ArrayList 是一个动态数组，它是线程不安全的，允许元素为 nul
 1. 对于 EMPTY_ELEMENTDATA 和 DEFAULTCAPACITY_EMPTY_ELEMENTDATA 空数组，二者名字不同是为了区分在构造时有无指定初始容量，后续在动态扩容时会有区别，其中默认容量采用懒加载的方式，即在增加元素时才开辟数组空间。
 2. 官方 bug 6260652，Collection.toArray() 方法返回的类型不一定是 Object[]，主要因为继承的原因，父类实例的具体类型取决于在 new 时子类的类型。
 3. Arrays.copyOf() 方法根据传入的类型决定是 new 还是反射来构造数组，保证返回的一定是 Object[]。
+4. Array.copyOf() 可以看作是受限的 System.arraycopy() ,它主要是用来将原数组全部拷贝到一个新长度的数组，适用于数组扩容。
 
 ```java
 // default constructor's emtpy array
 private static final Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = {};
 // store element
 transient Object[] elementData;
-// current element size
+
 private int size;
 // default constructor, lazy load
 public ArrayList() {
@@ -329,3 +330,8 @@ private class Itr implements Iterator<E> {
 }
 ```
 
+### 9. 参考
+
+[搞懂 Java ArrayList 源码](https://juejin.im/post/6844903582194466824)
+
+[从最基本的 ArrayList 谈起](https://www.nowcoder.com/tutorial/10029/746a5793abfc4981a76342db5e7eb57e)

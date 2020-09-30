@@ -1,27 +1,69 @@
 package test.arraylist;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Iterator;
 
 public class ArrayListTest {
 
     public static void main(String[] args) {
-        List<Integer> list1 = new ArrayList<>();
-        List<Integer> list2 = new ArrayList<>(0);
-        for (int i = 0; i <= 10; i++) {
-            list1.add(i);
-            list2.add(i);
+        ArrayList<Integer> arrayList = new ArrayList<>();
+
+        System.out.printf("Before add:arrayList.size() = %d\n", arrayList.size());
+
+        arrayList.add(1);
+        arrayList.add(3);
+        arrayList.add(5);
+        arrayList.add(7);
+        arrayList.add(9);
+        System.out.printf("After add:arrayList.size() = %d\n",arrayList.size());
+
+        System.out.println("Printing elements of arrayList");
+
+        // 通过迭代器遍历
+        System.out.print("通过迭代器遍历:");
+        Iterator<Integer> it = arrayList.iterator();
+        while (it.hasNext()) {
+            System.out.print(it.next() + " ");
         }
-        for (Integer i : list1) {
-            if (i.equals(9)) {
-                list1.remove((Integer)9);
-            }
+        System.out.println();
+
+        // 通过索引值遍历
+        System.out.print("通过索引值遍历:");
+        for (int i = 0; i < arrayList.size(); i++) {
+            System.out.print(arrayList.get(i) + " ");
         }
-        list1.remove(0);
-        list1.set(0, 0);
-        if (list1.contains(0)) {
-            System.out.println(list1.get(0));
+        System.out.println();
+
+        // for 循环遍历
+        System.out.print("for 循环遍历:");
+        for(Integer number : arrayList){
+            System.out.print(number + " ");
         }
+
+        // toArray用法
+        Integer[] integer = arrayList.toArray(new Integer[0]);
+
+        Integer[] integer1 = new Integer[arrayList.size()];
+        arrayList.toArray(integer1);
+
+        // 抛出异常，java不支持向下转型
+        // Integer[] integer2 = new Integer[arrayList.size()];
+        // integer2 = arrayList.toArray();
+        System.out.println();
+
+        // 在指定位置添加元素
+        arrayList.add(2,2);
+        // 删除指定位置上的元素
+        arrayList.remove(2);
+        // 删除指定元素
+        arrayList.remove((Object)3);
+        // 判断arrayList是否包含5
+        System.out.println("ArrayList contains 5 is: " + arrayList.contains(5));
+
+        // 清空 ArrayList
+        arrayList.clear();
+        // 判断 ArrayList 是否为空
+        System.out.println("ArrayList is empty: " + arrayList.isEmpty());
     }
 
 }
