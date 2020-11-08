@@ -1,8 +1,11 @@
-package test.arraylist;
+package test.list;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
+/**
+ * @author LiuJie
+ */
 public class ArrayListTest {
 
     public static void main(String[] args) {
@@ -58,12 +61,12 @@ public class ArrayListTest {
         // 删除指定元素
         arrayList.remove((Object)3);
         // 判断arrayList是否包含5
-        System.out.println("ArrayList contains 5 is: " + arrayList.contains(5));
+        System.out.println("ArrayList contains 5 is : " + arrayList.contains(5));
 
         // 清空 ArrayList
         arrayList.clear();
         // 判断 ArrayList 是否为空
-        System.out.println("ArrayList is empty: " + arrayList.isEmpty());
+        System.out.println("ArrayList is empty : " + arrayList.isEmpty());
     }
 
 }
